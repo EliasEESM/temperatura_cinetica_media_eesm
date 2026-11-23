@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Temperatura Cinética Media · Formación Técnica en Mediciones Especiales</title>
+  <meta name="description" content="Capacitación técnica interactiva sobre Temperatura Cinética Media (TCM / MKT): fundamentos, energía de activación, análisis dimensional, cálculo en Excel y taller práctico.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../../core/theme.css">
+</head>
+<body>
+  <!-- Barra Superior Fija -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a href="../../index.html" class="brand-group" aria-label="Volver al portal de módulos">
+        <div class="brand-logo-wrap">
+          <img id="brandLogo" src="../../assets/logo.png" alt="Logo institucional">
+          <span id="brandLogoFallback" class="brand-logo-fallback" style="display: none;">CVC</span>
+        </div>
+        <div class="brand-titles">
+          <span id="brandProgram" class="brand-program">Formación Técnica · Mediciones Especiales</span>
+          <span id="brandModule" class="brand-module">Módulo: Temperatura Cinética Media</span>
+        </div>
+      </a>
+
+      <button type="button" id="navToggle" class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+      <nav id="navMenu" class="nav-menu" aria-label="Navegación principal"></nav>
+    </div>
+  </header>
+
+  <!-- Portada Principal -->
+  <section id="inicio" class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          <span id="heroBadgeText">Módulo: Temperatura Cinética Media</span>
+        </div>
+        <h1 id="heroTitle" class="hero-title">Temperatura Cinética Media</h1>
+        <p id="heroSubtitleEn" class="hero-subtitle-en">Mean Kinetic Temperature (MKT)</p>
+
+        <div class="hero-formula-math" aria-label="Fórmula matemática principal de Temperatura Cinética Media">
+          <div id="heroMathFormula" class="katex-hero-target"></div>
+        </div>
+
+        <p id="heroIntro" class="hero-intro">Definición, explicación y desarrollo en Excel</p>
+        <div class="hero-actions">
+          <button type="button" id="btnStartGuided" class="btn btn-primary">Iniciar recorrido guiado →</button>
+          <a href="#evaluacion" class="btn btn-secondary">Ir al taller práctico</a>
+        </div>
+      </div>
+
+      <aside class="hero-summary-card" aria-label="Parámetros de referencia">
+        <div class="hero-summary-title">Parámetros Estándar de Referencia</div>
+        <div id="heroKpiGrid" class="hero-kpi-grid"></div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Contenido Principal (Bento Grid + Evaluación) -->
+  <main class="main-container">
+    <div id="modulesContainer"></div>
+    <section id="evaluacion" class="quiz-section">
+      <div id="quizContainer"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    Formación Técnica · Mediciones Especiales (Módulo: Temperatura Cinética Media)
+  </footer>
+
+  <!-- Ventana Modal Centrada para Flashcards -->
+  <div id="cardModalBackdrop" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modalTitle">
+    <div class="modal-window">
+      <div class="modal-header">
+        <div class="modal-header-meta">
+          <span id="modalKicker" class="modal-kicker"></span>
+          <h2 id="modalTitle" class="modal-title"></h2>
+        </div>
+        <button type="button" id="modalCloseBtn" class="modal-close" aria-label="Cerrar ficha">✕</button>
+      </div>
+
+      <div id="modalBody" class="modal-body"></div>
+
+      <div class="modal-footer">
+        <button type="button" id="modalPrevBtn" class="btn btn-secondary">← Anterior</button>
+        <span id="modalCounter" style="font-size: 0.85rem; color: var(--gray-500); font-weight: 600;"></span>
+        <button type="button" id="modalNextBtn" class="btn btn-primary">Siguiente →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts con carga defer para respuesta rápida -->
+  <script defer src="../../core/engine.js"></script>
+  <script defer src="tcm-animations.js"></script>
+  <script defer src="tcm-data.js"></script>
+  <script defer>
+    window.addEventListener('DOMContentLoaded', () => {
+      const mathEl = document.getElementById('heroMathFormula');
+      if (mathEl && window.katex) {
+        window.katex.render(
+          'T_{\\text{TCM}} = \\dfrac{\\Delta H / R}{-\\ln\\!\\left( \\dfrac{1}{n} \\sum_{i=1}^{n} \\exp\\!\\left( -\\dfrac{\\Delta H / R}{T_i\\,(\\text{K})} \\right) \\right)} - 273,15',
+          mathEl,
+          { displayMode: true, throwOnError: false }
+        );
+      }
+
+      if (window.TrainingEngine && window.TCM_MODULE_DATA) {
+        window.TrainingEngine.init(window.TCM_MODULE_DATA);
+      }
+    });
+  </script>
+</body>
+</html>
