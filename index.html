@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formación Técnica · Mediciones Especiales</title>
+  <meta name="description" content="Portal corporativo de capacitación técnica en mediciones especiales: Temperatura Cinética Media, Letalidad Acumulada y Estimación de Incertidumbre.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="core/theme.css">
+</head>
+<body>
+  <!-- Barra Superior Fija -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a href="#inicio" class="brand-group" aria-label="Inicio del portal">
+        <div class="brand-logo-wrap">
+          <img id="portalLogo" src="assets/logo.png" alt="Logo institucional">
+          <span id="portalLogoFallback" class="brand-logo-fallback" style="display: none;">CVC</span>
+        </div>
+        <div class="brand-titles">
+          <span class="brand-program">Formación Técnica · Mediciones Especiales</span>
+          <span class="brand-module">Portal de Módulos de Capacitación</span>
+        </div>
+      </a>
+
+      <button type="button" id="portalNavToggle" class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+      <nav id="portalNavMenu" class="nav-menu" aria-label="Navegación principal">
+        <a href="#modulos" class="nav-link active">Módulos</a>
+        <a href="modulos/01-tcm/index.html" class="nav-link">Ir a TCM →</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Portada del Portal -->
+  <section id="inicio" class="hero">
+    <div class="hero-inner single-col">
+      <div>
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          <span>Programa de Capacitación Técnica</span>
+        </div>
+        <h1 class="hero-title">Formación Técnica · Mediciones Especiales</h1>
+        <p class="hero-intro">
+          Plataforma para capacitación del fundamento físico, el rigor matemático, el desarrollo en Excel y la verificación práctica de conceptos en caracterización y validación térmica.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Catálogo de Módulos (Bento Grid) -->
+  <main id="modulos" class="main-container">
+    <div class="section-header">
+      <div>
+        <div class="section-kicker">Plan de Formación</div>
+        <h2 class="section-title">Módulos Disponibles y Próximos Lanzamientos</h2>
+      </div>
+    </div>
+
+    <div class="bento-grid">
+      <!-- Módulo 01: Activo -->
+      <a href="modulos/01-tcm/index.html" class="bento-card span-12 featured">
+        <div>
+          <div class="card-top">
+            <span class="card-number">MÓDULO 01</span>
+            <span class="card-tag status-live">Disponible ahora</span>
+          </div>
+          <h3 class="card-title" style="font-size: 1.42rem;">Temperatura Cinética Media (TCM / MKT)</h3>
+          <p class="card-excerpt">
+            Definición técnica, anatomía paso a paso de la fórmula, análisis dimensional, cálculo en Excel y taller práctico con calculadora.
+          </p>
+        </div>
+        <div class="card-footer">
+          <span>Ingresar al módulo de capacitación</span>
+          <span class="card-arrow" aria-hidden="true">→</span>
+        </div>
+      </a>
+
+      <!-- Módulo 02: Próximamente -->
+      <article class="bento-card span-6 is-coming-soon" aria-disabled="true">
+        <div>
+          <div class="card-top">
+            <span class="card-number">MÓDULO 02</span>
+            <span class="card-tag">Próximamente</span>
+          </div>
+          <h3 class="card-title">Letalidad Acumulada</h3>
+          <p class="card-excerpt">
+            Integración trapezoidal, parámetros D, Z y T<sub>ref</sub>, relación entre F<sub>0</sub> y ALeth, desarrollo en Excel y taller de cálculo.
+          </p>
+        </div>
+        <div class="card-footer">
+          <span>En desarrollo · Próximamente disponible</span>
+          <span aria-hidden="true">⏳</span>
+        </div>
+      </article>
+
+      <!-- Módulo 03: Próximamente -->
+      <article class="bento-card span-6 is-coming-soon" aria-disabled="true">
+        <div>
+          <div class="card-top">
+            <span class="card-number">MÓDULO 03</span>
+            <span class="card-tag">Próximamente</span>
+          </div>
+          <h3 class="card-title">Estimación de Incertidumbre en Mediciones Especiales</h3>
+          <p class="card-excerpt">
+            Presupuesto de incertidumbre Tipo A y Tipo B, inhomogeneidad espacial, inestabilidad temporal, deriva de sensores e incertidumbre expandida (k=2).
+          </p>
+        </div>
+        <div class="card-footer">
+          <span>En desarrollo · Próximamente disponible</span>
+          <span aria-hidden="true">⏳</span>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    Formación Técnica · Mediciones Especiales — Plataforma Modular de Capacitación
+  </footer>
+
+  <script defer>
+    window.addEventListener('DOMContentLoaded', () => {
+      const logo = document.getElementById('portalLogo');
+      const fallback = document.getElementById('portalLogoFallback');
+      if (logo) {
+        logo.onerror = () => {
+          logo.style.display = 'none';
+          if (fallback) fallback.style.display = 'block';
+        };
+      }
+      const toggle = document.getElementById('portalNavToggle');
+      const menu = document.getElementById('portalNavMenu');
+      if (toggle && menu) {
+        toggle.addEventListener('click', () => {
+          const open = menu.classList.toggle('is-open');
+          toggle.setAttribute('aria-expanded', String(open));
+        });
+      }
+    });
+  </script>
+</body>
+</html>
